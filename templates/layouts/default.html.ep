@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Ivan Trunaev">
     <meta name="generator" content="Hugo 0.118.2">
-    <title><%= title || 'Kosherny Site' %></title>
+    <title><%= title . ' :: Kosherny Site' %></title>
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -141,7 +141,7 @@
     <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
 		  <span class="fs-2"><strong>&#x2721;</strong></span>&nbsp;
-        <span class="fs-4">Kosheny</span>
+        <span class="fs-4">Kosherny</span>
       </a>
 
       <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
