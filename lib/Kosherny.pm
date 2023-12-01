@@ -1,20 +1,19 @@
 package Kosherny;
-use Mojo::Base 'Mojolicious', -signatures;
 
-# This method will run once at server start
-sub startup ($self) {
+use strict;
+use warnings;
 
-  # Load configuration from config file
-  my $config = $self->plugin('NotYAMLConfig');
+use base 'Mojolicious';
 
-  # Configure the application
-  $self->secrets($config->{secrets});
+sub startup {
+	my $self = shift;
 
-  # Router
-  my $r = $self->routes;
+	my $config = $self->plugin('Config');
 
-  # Normal route to controller
-  $r->get('/')->to('Example#welcome');
+	$self->secrets($config->{secrets});
+
+	my $r = $self->routes;
+	$r->get('/')->to('Example#welcome');
 }
 
 1;
