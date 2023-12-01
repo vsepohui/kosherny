@@ -13,7 +13,7 @@ sub startup {
 	$self->secrets($config->{secrets});
 
 	my $r = $self->routes;
-	$r->get('/')->to('Example#welcome');
+	$r->get('/')->to('Stream#stream');
 }
 
 1;
