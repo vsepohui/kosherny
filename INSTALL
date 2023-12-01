@@ -1,0 +1,5 @@
+HOW TO INSTALL MIR KERNEL ON DEBIAN / UBUNTU:
+
+sudo apt install cpanminus make build-essential
+
+sudo cpanm Mojolicious AnyEvent EV JSON::XS
