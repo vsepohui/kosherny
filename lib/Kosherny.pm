@@ -18,6 +18,7 @@ sub startup {
 
 	my $r = $self->routes;
 	$r->get('/')->to('Stream#stream');
+	$r->get('/cohen')->to('Stream#cohen');
 }
 
 1;
