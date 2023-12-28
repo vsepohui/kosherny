@@ -11,6 +11,8 @@ use base 'Mojolicious::Controller';
 use JSON;
 use FindBin qw($Bin);
 
+use constant ITEM_PER_PAGE => 20;
+
 
 sub _slurp_file {
 	my $self = shift;
@@ -49,16 +51,30 @@ sub load_file {
 sub stream {
 	my $self = shift;
 	
+	my $page = $self->param('page') // 1;
+	return $self->reply->not_found if ($page =~ /\D/ || $page < 1);	
+	
 	my $f = $self->load_file($Bin . '/data.dump');
+	my @f = split /\n/, $f;
+
+	my $ipp = $self->ITEM_PER_PAGE();
+	my $pages = int (scalar (@f) / $ipp) + 1;
 	
+	return $self->reply->not_found if $page > $pages;
+	@f = splice(@f, ($page - 1) * $ipp, $ipp);
+
+
 	my @stream;
-	for my $s (split /\n/, $f) {
-		push @stream, decode_json  Encode::encode_utf8($s);
+	for my $s (@f) {
+		push @stream, decode_json Encode::encode_utf8($s);
 	}
-	
-	@stream = sort {$b->[1] <=> $a->[1]} @stream;
-	
-	$self->render(stream => \@stream);
+
+
+	$self->render(
+		stream => \@stream,
+		pages  => $pages,
+		page   => $page,
+	);
 }
 
 1;

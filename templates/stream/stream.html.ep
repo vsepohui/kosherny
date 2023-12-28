@@ -19,4 +19,55 @@
 </div><br/>
 % }
 
+
+
+% if ($pages > 1) {
+<br/>
+<nav>
+  <ul class="pagination justify-content-center">
+	% if ($page > 1) {
+		<li class="page-item"><a class="page-link" href="?page=<%= $page - 1%>">&lt;</a></li>
+	% }
+	% if ($page <= 4) {
+		% for (1..5) {
+			% if ($page == $_) {
+				<li class="page-item active"><span class="page-link"><%= $_ %></span></li>
+			% } else {
+				<li class="page-item"><a class="page-link" href="?page=<%= $_ %>"><%= $_ %></a></li>
+			% }
+		% }	
+		<li class="page-item"><span class="page-link">...</span></li>
+		<li class="page-item"><a class="page-link" href="?page=<%= $pages %>"><%= $pages %></a></li>
+	% } elsif ($page >= $pages - 4) {
+		<li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+		<li class="page-item"><span class="page-link">...</span></li>
+		% for ($pages - 5..$pages) {
+			% if ($page == $_) {
+				<li class="page-item active"><span class="page-link"><%= $_ %></span></li>
+			% } else {
+				<li class="page-item"><a class="page-link" href="?page=<%= $_ %>"><%= $_ %></a></li>
+			% }
+		% }	
+	% } else {
+		<li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+		<li class="page-item"><span class="page-link">...</span></li>
+		% for ($page - 2 .. $page + 2) {
+			% if ($page == $_) {
+				<li class="page-item active"><span class="page-link"><%= $_ %></span></li>
+			% } else {
+				<li class="page-item"><a class="page-link" href="?page=<%= $_ %>"><%= $_ %></a></li>
+			% }
+		% }	
+		<li class="page-item"><span class="page-link">...</span></li>
+		<li class="page-item"><a class="page-link" href="?page=<%= $pages %>"><%= $pages %></a></li>	
+	% }
+	
+	% if ($page < $pages) {
+		<li class="page-item"><a class="page-link" href="?page=<%= $page + 1 %>">&gt;</a></li>
+	% }
+  </ul>
+</nav>
+% }
+
+
 </div>
