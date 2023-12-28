@@ -19,6 +19,8 @@ sub startup {
 	my $r = $self->routes;
 	$r->get('/')->to('Stream#stream');
 	$r->get('/cohen')->to('Stream#cohen');
+	$r->get('/donate')->to('Stream#donate');
+	$r->get('/links')->to('Stream#links');
 }
 
 1;
