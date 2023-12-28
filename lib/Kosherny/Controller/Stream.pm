@@ -49,7 +49,7 @@ sub load_file {
 sub stream {
 	my $self = shift;
 	
-	my $f = $self->load_file($Bin . '/vk.dump');
+	my $f = $self->load_file($Bin . '/data.dump');
 	
 	my @stream;
 	for my $s (split /\n/, $f) {

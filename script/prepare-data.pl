@@ -9,6 +9,7 @@ use Kosherny::Config;
 use JSON;
 use utf8;
 use Encode;
+use Data::Dumper;
 
 sub _slurp_file {
 	my $file = shift;
@@ -22,20 +23,27 @@ sub _slurp_file {
 	return $s;
 }
 
-my $vk  = _slurp_file($Bin. '/vk.dump');
-my $tme = _slurp_file($Bin. '/t-me.dump');
+my $data  = _slurp_file($Bin. '/vk.dump');
+$data .= _slurp_file($Bin. '/t-me.dump');
 
 my @stream; 
 
-for my $s (split /\n/, $vk . $tme) {
-	warn $s;
+for my $s (split /\n/, $data) {
 	push @stream, decode_json  Encode::encode_utf8($s);
 }
 
 @stream = sort {$b->[1] <=> $a->[1]} @stream;
 
-for (@stream) {
-	say encode_json(\$_);
+for my $s (@stream) {
+	if ($s) {
+		eval {
+			say encode_json($s);
+		};
+		if ($@) {
+			warn $@;
+		#	die Dumper \$s;
+		}
+	}
 }
 	
 

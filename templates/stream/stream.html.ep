@@ -11,7 +11,7 @@
 	&nbsp;<a href="<%= $s->[0] %>"><strong><%= $s->[0] %></strong></a> at <%= scalar localtime $s->[1] %>
     <p class="card-text">
 		% for (split /\n/, $s->[2]) {
-			%= $_;
+			%== $_;
 			<br/>
 		% }
 	</p>
