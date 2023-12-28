@@ -1,3 +1,30 @@
 {
 	secrets => '', 
+	
+	vk_token => 'need vk app token',
+	vk_feeds => [
+		qw(
+			https://vk.com/vsepohui_ru
+			https://vk.com/post_bard
+			https://vk.com/anarchy_press_ru
+			https://vk.com/begavor
+			https://vk.com/bogavor
+			https://vk.com/shesofreenia
+			https://vk.com/bibingo
+			https://vk.com/yahwe_music
+			https://vk.com/kosherny_news
+			https://vk.com/cosmos_story
+			https://vk.com/king_magazin
+			https://vk.com/books_magazin
+			https://vk.com/buddha_story
+			https://vk.com/kunteynir_ru
+			https://vk.com/moy_zvuk
+			https://vk.com/kasha_kitchen
+			https://vk.com/pelevin_book
+			https://vk.com/beka_chura
+			https://vk.com/ivan_iv_grozniy
+			https://vk.com/pelevin_sex
+			https://vk.com/anarchy_press
+		),
+	],	
 }

@@ -2,14 +2,18 @@ package Kosherny;
 
 use strict;
 use warnings;
+use 5.022;
+
+use Kosherny::Config;
 
 use base 'Mojolicious';
 
 sub startup {
 	my $self = shift;
+	
 
-	my $config = $self->plugin('Config');
-
+	my $config = $self->{config} = new Kosherny::Config;
+	
 	$self->secrets($config->{secrets});
 
 	my $r = $self->routes;
