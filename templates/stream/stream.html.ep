@@ -3,93 +3,21 @@
 
 <a href="javascript: (() => { function rus_to_latin ( str ) {var ru = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'j', 'з': 'z', 'и': 'i', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'shch', 'ы': 'y', 'э': 'e', 'ю': 'u', 'я': 'ya'}, n_str = [];str = str.replace(/[ъь]+/g, '').replace(/й/g, 'i');for ( var i = 0; i < str.length; ++i ) {n_str.push(ru[ str[i] ]|| ru[ str[i].toLowerCase() ] == undefined && str[i]|| ru[ str[i].toLowerCase() ].toUpperCase());}return n_str.join('');} document.documentElement.innerHTML = rus_to_latin(document.documentElement.innerHTML); })();">Russian to translit</a> (Drop link by mouse to bookmarks at browser)
 
+
+% for my $s (@$stream) {
+% next unless $s->[2];
 <div class="card" style="">
   <div class="card-body">
 	<img src="/i/apple_cohen.jpg" class="rounded-circle" width="32px"> 
-	&nbsp;<a href="https://vk.com/vsepohui_ru?w=wall823986526_594"><strong>Ivan Trunaev</strong></a> at  Dec 12 at 14:39
+	&nbsp;<a href="<%= $s->[0] %>"><strong><%= $s->[0] %></strong></a> at <%= $s->[1] %>
     <p class="card-text">
-    <pre>
-Все мои соц сети:
-https://vk.com/ivan_trunaev (DEAD)
-https://vk.com/vsepohui_ru
-https://m.vk.com/begavor (LOSED)
-https://m.vk.com/bogavor (LOSED)
-https://m.vk.com/shesofreenia (LOSED)
-https://m.vk.com/bibingo (LOSED)
-https://m.vk.com/yahwe_music (LOSED, BUT MANY MUSIC)
-https://vk.com/kosherny_news
-https://vk.com/cosmos_story
-https://vk.com/king_magazin
-https://vk.com/books_magazin
-https://vk.com/buddha_story
-https://vk.com/kunteynir_ru
-https://vk.com/moy_zvuk
-https://vk.com/kasha_kitchen
-https://vk.com/pelevin_book
-https://vk.com/beka_chura
-https://vk.com/ivan_iv_grozniy
-https://vk.com/pelevin_sex
-https://vk.com/anarchy_press (LOSED)
-
-Web-sites:
-https://yahwe.kosherny.site/ (OLD yahwe.ru mirror)
-https://kosherny.site
-https://anarchy-press.ru
-
-Telegram:
-https://t.me/apple_cohen
-https://t.me/true_president
-https://t.me/vedaus
-https://t.me/shiwa_veto
-
-https://vsepohui.bandcamp.com/
-https://soundcloud.com/trunaev
-https://soundcloud.com/vsepohui
-https://twitter.com/opiate_lepicure/
-https://www.instagram.com/ivan.trunaev/
-https://www.last.fm/user/trunaev
-https://www.last.fm/user/yoni_yoni_yoni (LOSED)
-https://github.com/vsepohui
-https://github.com/trunaev (LOSED)
-https://dzen.ru/shiwa
-</pre>
-    </p>
+		% for (split /\n/, $s->[2]) {
+			%= $_;
+			<br/>
+		% }
+	</p>
   </div>
-</div>
+</div><br/>
+% }
 
-
-<div class="card" style="">
-  <div class="card-body">
-	<img src="/i/apple_cohen.jpg" class="rounded-circle" width="32px"> 
-	&nbsp;<a href="https://t.me/apple_cohen/44"><strong>Apple Cohen</strong></a> at  Dec 7 at 22:57
-    <p class="card-text">
-Начал работать над печатным изданием Анархия - <a href="https://anarchy-press.ru" target="_blank">anarchy-press.ru<a/>
-    </p>
-  </div>
-</div>
-
-
-<div class="card" style="">
-  <div class="card-body">
-	<img src="/i/apple_cohen.jpg" class="rounded-circle" width="32px"> 
-	&nbsp;<a href="https://t.me/apple_cohen/34"><strong>Apple Cohen</strong></a> at  Dec 3 at 19:55
-    <p class="card-text">
-Recover my old website at url - <a href="https://yahwe.kosherny.site/"/>https://yahwe.kosherny.site/</a>
-    </p>
-  </div>
-</div>
-
-<br/>
-<div class="card" style="">
-  <div class="card-body">
-	<img src="/i/apple_cohen.jpg" class="rounded-circle" width="32px"> 
-	&nbsp;<a href="https://t.me/apple_cohen/30"><strong>Apple Cohen</strong></a> at  Nov 29 at 12:08
-    <p class="card-text">
-Не дай бог белому оказаться в Америке<br/>
-<br/>
-Без шуток: в Америке правит - черное подполье, еще со времен Обамы. Белых там считают - людьми второго сорта, посмотрите на Президента, его поставили, чтобы издеваться!<br/>
-В Америке самый популярный iPhone - черный, а еще там есть особые sim-карты для черных, есть черные visa, даже черный спецназ есть, командует - Snoopp Dogg, может за 15 минут на черных вертолетах высадиться почти в любом штате!<br/>
-А все потому - что негры мрут гашишом!<br/>
-    </p>
-  </div>
 </div>
