@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 
+use 5.028;
 use strict;
 use warnings;
-use FindBin qw($Bin);
-use lib $Bin . '/../lib/';
-use 5.022;
+use lib '../lib/';
+
 use Kosherny::Config;
 use JSON;
 
@@ -14,11 +14,14 @@ my $token = $config->{vk_token};
 sub fetch {
 	my %params = @_;
 	my $url = "https://api.vk.com/method/wall.get?".join '&', map {$_ . '=' . $params{$_}} sort keys %params;
-	my $json = `curl -s "$url"`;
+	my $json = qq[curl -s "$url"];
+	$json = `$json`;
 	return decode_json $json;
 }
 
-for my $feed (@{$config->{vk_feeds}}) {
+my %f = map {$_ =>1} @{$config->{vk_feeds}};
+
+for my $feed (map {"https://vk.com/$_"} keys %f) {
 	my $feed2 = $feed;
 	$feed =~ s/^https\:\/\/vk\.com\/(.+)$/$1/;
 	
@@ -49,6 +52,7 @@ for my $feed (@{$config->{vk_feeds}}) {
 
 
 			for (@{$d->{response}->{items}}) {
+				next unless $_->{text};
 				say encode_json ([$feed2, $_->{date}, $_->{text}]);
 			}
 			
