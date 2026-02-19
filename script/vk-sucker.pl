@@ -34,9 +34,13 @@ for my $feed (map {"https://vk.com/$_"} keys %f) {
 		access_token => $token,
 		v            => '5.81',
 	);
-	
+
 	for (@{$d->{response}->{items}}) {
-		say encode_json ([$feed2, $_->{date}, $_->{text}]);
+		use Data::Dumper;
+		#die Dumper $_;
+		my $text = $_->{copy_history}->[0]->{text} // $_->{text};
+		say $text;
+		say '-'x44;
 	}
 	
 	if ($d->{response}->{count} > 100) {
@@ -53,7 +57,8 @@ for my $feed (map {"https://vk.com/$_"} keys %f) {
 
 			for (@{$d->{response}->{items}}) {
 				next unless $_->{text};
-				say encode_json ([$feed2, $_->{date}, $_->{text}]);
+				#say $feed2;
+				#say $_->{text};
 			}
 			
 		}
